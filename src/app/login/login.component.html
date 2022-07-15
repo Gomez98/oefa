@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="right-login">
+        <mat-card class="card-login">
+            <img class="login-img-background" mat-card-avatar src="assets/cactus-login.jpg">
+            <mat-card-title>Ingresar al sistema</mat-card-title>
+            <mat-card-content class="card-login-content">
+                <form class="login-form">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Usuario</mat-label>
+                        <mat-icon matPrefix class="my-icon">person</mat-icon>
+                        <input type="email" matInput [formControl]="emailFormControl" placeholder="email@example.com">
+                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                            Por favor ingrese un email válido
+                        </mat-error>
+                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                            Email es <strong>requerido</strong>
+                        </mat-error>
+
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Contraseña</mat-label>
+                        <mat-icon matPrefix class="my-icon">lock</mat-icon>
+                        <input type="password" matInput [formControl]="passwordFormControl" placeholder="password">
+                        <mat-error *ngIf="passwordFormControl.hasError('required')">
+                            Contraseña es <strong>requerido</strong>
+                        </mat-error>
+                    </mat-form-field>
+
+                </form>
+            </mat-card-content>
+            <mat-card-actions class="card-login-actions">
+                <button mat-raised-button color="primary" (click)="loginValidation()">Ingresar</button>
+            </mat-card-actions>
+        </mat-card>
+
+    </div>
+</div>

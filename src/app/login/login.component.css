@@ -1,0 +1,32 @@
+
+.container {
+    height: 100vh;
+}
+
+
+.login-img{
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(5px 5px 10px gray);
+}
+
+.right-login{
+    display:flex;
+    height: 100%;
+    justify-content:center;
+    align-items: center;
+}
+
+.login-form{
+    display:flex;
+    flex-direction: column;
+}
+.card-login{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+}
+.card-login-content{
+    margin-top: 10px;
+}
