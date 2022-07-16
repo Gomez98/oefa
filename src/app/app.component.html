@@ -1,1 +1,7 @@
-<router-outlet></router-outlet>
+<nav mat-tab-nav-bar >
+    <a  mat-tab-link *ngFor="let tabItem of tabs" [routerLink]="tabItem.route">
+      {{tabItem.label}}
+    </a>
+</nav>
+  
+  <router-outlet></router-outlet>

@@ -1,8 +1,17 @@
 
 .container {
     height: 100vh;
+    background-image: url("/assets/imagen-portal.jpg");
+    opacity: 0.8;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
+.btn-primary{
+    background-color: #144aa7;
+    color: #fff;
+}
 
 .login-img{
     width: 100%;

@@ -18,12 +18,16 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
+import { HeroComponent } from './hero/hero.component';
+import { AgreementComponent } from './agreement/agreement.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    TabComponent
+    TabComponent,
+    HeroComponent,
+    AgreementComponent
   ],
   imports: [
     BrowserModule,

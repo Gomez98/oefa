@@ -1,0 +1,36 @@
+.back-image{
+    /*background-image: url("/assets/imagen-portal.jpg");*/
+    background-color: #144aa7;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom:100px;
+}
+
+.sub-title-hero{
+    color:#0bc7e0;
+    font-size: 50px;
+    font-family: cursive;
+    
+}
+
+.paragraph-hero{
+    background-color: white;
+    font-size: 20px;
+    font-family: cursive;
+    border-radius:10px;
+    margin-bottom:50px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
