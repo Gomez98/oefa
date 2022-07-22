@@ -12,6 +12,7 @@ span{
     color: white;
     font-size: 18px;
     font-family: cursive; 
+    margin-bottom: 20px;
 }
 
 .agreement-container{
@@ -31,4 +32,13 @@ span{
     flex-direction: column;
     justify-content: center;
     margin-bottom:100px;
+}
+
+.btn-sigin{
+    width:100px;
+}
+
+.agreement-btn-container{
+    display: flex;
+    justify-content: center;
 }

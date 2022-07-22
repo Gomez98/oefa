@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
-import { TabComponent } from './tab/tab.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -20,14 +19,31 @@ import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HeroComponent } from './hero/hero.component';
 import { AgreementComponent } from './agreement/agreement.component';
+import { ManagementComponent } from './management/management.component';
+import { SendagreementComponent } from './sendagreement/sendagreement.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { ProductComponent } from './product/product.component';
+import { CategoryComponent } from './category/category.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogEditCategoryComponent } from './dialog-edit-category/dialog-edit-category.component';
+import { DialogEditProductComponent } from './dialog-edit-product/dialog-edit-product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    TabComponent,
     HeroComponent,
-    AgreementComponent
+    AgreementComponent,
+    ManagementComponent,
+    SendagreementComponent,
+    ProductComponent,
+    CategoryComponent,
+    DialogEditCategoryComponent,
+    DialogEditProductComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +61,13 @@ import { AgreementComponent } from './agreement/agreement.component';
     MatSidenavModule,
     MatListModule,
     MatDividerModule,
-    MatTabsModule
+    MatTabsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

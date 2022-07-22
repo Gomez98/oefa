@@ -1,0 +1,27 @@
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height:100%;
+    align-items: center;
+    justify-content:space-around;
+    background-color: #144aa7;
+  }
+  .actions{
+    display: flex;
+    flex-direction: column;
+  }
+  .product-table{
+    width:70vw;
+  }
+  .btn-icon{
+    color: #144aa7;
+  }
+  
+  .status-icon{
+    font-size:32px;
+  }
+  
+  .status-icon-off{
+    color: gray;
+  }

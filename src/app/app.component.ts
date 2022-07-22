@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpService } from './http.service'
 export interface TabItem {
   label: string;
   route: string;
@@ -8,9 +9,13 @@ export interface TabItem {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  logged:boolean = false;
+
+  constructor(private httpService: HttpService){}
+
   title = 'oefa';
-  tabs: TabItem[] = [
+  tabsWhenLogout: TabItem[] = [
     {
       label: '¿Qúe es OEFA?',
       route: 'hero',
@@ -28,4 +33,24 @@ export class AppComponent {
       route: 'login',
     },
   ];
+
+  tabsWhenLogin: TabItem[] = [
+    {
+      label: 'Formularios enviados',
+      route: 'forms'
+    },
+    {
+      label: 'Mantenimiento Productos',
+      route: 'mgmtProducts'
+    },
+    {
+      label: 'Mantenimiento Categorias ',
+      route: 'mgmtCategories'
+    }
+  ]
+
+  ngOnInit() {
+    this.httpService.currentLoginStatusMessage.subscribe(msg => this.logged = msg); 
+  }
+
 }

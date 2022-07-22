@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="agreement-content">
+        <mat-card class="agreement-card">
+            <mat-card-title>Información corporativa</mat-card-title>
+            <mat-card-content class="agreement-card-content">
+                <form class="agreement-form">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Nombre</mat-label>
+                        <input type="text" matInput [formControl]="nameFormControl" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngFor="let option of filteredOptions | async" [value]="option" #matOption
+                                (click)="clickName(matOption.value)">
+                                {{option}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Razón Social</mat-label>
+                        <input type="text" matInput  [value]="businessName">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>RUC</mat-label>
+                        <input type="number" matInput  [value]="ruc">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Correo Corporativo</mat-label>
+                        <input type="text" matInput  [value]="companyEmail">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Numero de contacto</mat-label>
+                        <input type="number" matInput  [value]="phone">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Categoria</mat-label>
+                        <mat-select [(value)]="catSelected">
+                            <mat-option *ngFor="let cat of categories" [value]="cat.id">{{cat.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Producto</mat-label>
+                        <mat-select [(value)]="prodSelected">
+                            <mat-option *ngFor="let prod of products" [value]="prod.id">{{prod.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Características</mat-label>
+                        <textarea matInput maxlength="250" [formControl]="featureFormControl"></textarea>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Price</mat-label>
+                        <input type="number" matInput [formControl]="priceFormControl">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Tiempo de Garantía</mat-label>
+                        <input type="number" matInput [formControl]="warrantyFormControl">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Tiempo de entrega</mat-label>
+                        <input type="number" matInput [formControl]="shippingFormControl">
+                    </mat-form-field>
+
+                </form>
+            </mat-card-content>
+            <mat-card-actions class="agreement-card-actions">
+                <button mat-raised-button class="btn-primary" (click)="send()">Enviar</button>
+            </mat-card-actions>
+        </mat-card>
+
+    </div>
+</div>

@@ -1,7 +1,15 @@
-<nav mat-tab-nav-bar >
-    <a  mat-tab-link *ngFor="let tabItem of tabs" [routerLink]="tabItem.route">
+<div *ngIf="logged else logout">
+  <nav mat-tab-nav-bar >
+    <a  mat-tab-link *ngFor="let tabItem of tabsWhenLogin" [routerLink]="tabItem.route">
       {{tabItem.label}}
     </a>
-</nav>
-  
-  <router-outlet></router-outlet>
+  </nav>
+</div>
+<ng-template #logout>
+  <nav mat-tab-nav-bar >
+    <a  mat-tab-link *ngFor="let tabItem of tabsWhenLogout" [routerLink]="tabItem.route">
+      {{tabItem.label}}
+    </a>
+  </nav>
+</ng-template>
+<router-outlet></router-outlet>

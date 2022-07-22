@@ -1,0 +1,11 @@
+.btn-global{
+    color: #144aa7;
+}
+
+.name-form {
+    width: 100%;
+}
+.actions-container{
+    display: flex;
+    justify-content:space-around;
+}

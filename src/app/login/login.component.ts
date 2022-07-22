@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
@@ -19,6 +19,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LoginComponent implements OnInit {
   durationInSeconds = 5;
+  @Output() loged = new EventEmitter<boolean>();
   matcher = new MyErrorStateMatcher();
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   passwordFormControl = new FormControl('', [Validators.required]);
@@ -34,11 +35,12 @@ export class LoginComponent implements OnInit {
   loginValidation(): void {
     let email = this.emailFormControl.value;
     let password = this.passwordFormControl.value;
-    this.httpService.postRequest('api/v1/supplier/login', email).subscribe((response) => {
-      let supplier = response.data.supplier;
+    this.httpService.postRequest('api/v1/employee/login', email).subscribe((response) => {
+      let emp = response.data.employee;
 
-      if (supplier.email === email && supplier.password === password) {
+      if (emp.email === email && emp.password === password) {
         this.router.navigateByUrl('/management');
+        this.httpService.updateLoginStatus(true);
       } else {
         this.emailFormControl.setValue('');
         this.emailFormControl.hasError('required')
