@@ -16,30 +16,30 @@
                     </mat-form-field>
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Razón Social</mat-label>
-                        <input type="text" matInput  [value]="businessName">
+                        <input type="text" matInput  [value]="businessName" [formControl]="businessNameFormControl">
                     </mat-form-field>
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>RUC</mat-label>
-                        <input type="number" matInput  [value]="ruc">
+                        <input type="number" matInput  [value]="ruc" [formControl]="rucFormControl">
                     </mat-form-field>
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Correo Corporativo</mat-label>
-                        <input type="text" matInput  [value]="companyEmail">
+                        <input type="text" matInput  [value]="companyEmail" [formControl]="companyEmailFormControl">
                     </mat-form-field>
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Numero de contacto</mat-label>
-                        <input type="number" matInput  [value]="phone">
+                        <input type="number" matInput  [value]="phone" [formControl]="phoneFormControl">
                     </mat-form-field>
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Categoria</mat-label>
                         <mat-select [(value)]="catSelected">
-                            <mat-option *ngFor="let cat of categories" [value]="cat.id">{{cat.name}}</mat-option>
+                            <mat-option *ngFor="let cat of categories" [value]="cat.id" #matOption (click)="clickCategory(matOption.value)">{{cat.name}}</mat-option>
                         </mat-select>
                     </mat-form-field>
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Producto</mat-label>
                         <mat-select [(value)]="prodSelected">
-                            <mat-option *ngFor="let prod of products" [value]="prod.id">{{prod.name}}</mat-option>
+                            <mat-option *ngFor="let prod of productOptions" [value]="prod.id">{{prod.name}}</mat-option>
                         </mat-select>
                     </mat-form-field>
                     <mat-form-field class="example-full-width" appearance="fill">

@@ -14,7 +14,7 @@ export class AgreementComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  singIn(): void {
+  send(): void {
     this.router.navigateByUrl('/sendAgreement')
   }
 

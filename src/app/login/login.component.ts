@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       let emp = response.data.employee;
 
       if (emp.email === email && emp.password === password) {
-        this.router.navigateByUrl('/management');
+        this.router.navigateByUrl('/sendedAgreements');
         this.httpService.updateLoginStatus(true);
       } else {
         this.emailFormControl.setValue('');

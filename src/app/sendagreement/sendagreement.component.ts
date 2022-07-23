@@ -6,18 +6,15 @@ import { HttpService } from '../http.service'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-
-
 interface Category {
   id: string;
   name: string;
 }
-
 interface Product {
   id: string;
   name: string;
+  categoryId: string;
 }
-
 interface Supplier {
   id: string;
   name: string;
@@ -26,8 +23,6 @@ interface Supplier {
   ruc: number;
   phone: number;
 }
-
-
 
 @Component({
   selector: 'app-sendagreement',
@@ -42,7 +37,7 @@ export class SendagreementComponent implements OnInit {
   agreement: any;
   categories: Category[];
   products: Product[];
-
+  productOptions: any[];
 
   supplierNameOptions: Supplier[] = [];
   nameFormControl = new FormControl('');
@@ -53,16 +48,14 @@ export class SendagreementComponent implements OnInit {
   phone?: number;
   ruc?: number;
 
-  /*
-  businessNameFormControl = new FormControl('');
-  rucFormControl = new FormControl('');
-  companyEmailFormControl = new FormControl('');
-  contactPhoneFormControl = new FormControl('');*/
-
   featureFormControl = new FormControl('');
   priceFormControl = new FormControl('');
   warrantyFormControl = new FormControl('');
   shippingFormControl = new FormControl('');
+  businessNameFormControl = new FormControl('');
+  rucFormControl = new FormControl('');
+  companyEmailFormControl = new FormControl('');
+  phoneFormControl = new FormControl('');
   constructor(
     private httpService: HttpService,
   ) { }
@@ -92,7 +85,7 @@ export class SendagreementComponent implements OnInit {
 
     this.httpService.getRequest('api/v1/product/list').subscribe((response) => {
       this.products = response.data.products.map((product: Product) => {
-        return { id: product.id, name: product.name }
+        return { id: product.id, name: product.name, categoryId: product.categoryId }
       });
     })
 
@@ -121,20 +114,48 @@ export class SendagreementComponent implements OnInit {
 
   send(): void {
     let sup = this.supplierNameOptions.find(sup => sup.name == this.nameFormControl.value);
-    let cat = this.categories.find(cat => cat.name == this.catSelected);
-    let pro = this.products.find(prod => prod.name == this.prodSelected);
-    this.agreement = {
-      supplierId: sup?.id,
-      categoryId: cat?.id,
-      productId: pro?.id,
-      features: this.featureFormControl.value,
-      price: this.priceFormControl.value,
-      warranty: this.warrantyFormControl.value,
-      shippingTime: this.shippingFormControl.value,
+    console.log("sup", sup);
+    let cat = this.categories.find(cat => cat.id == this.catSelected);
+    let pro = this.products.find(prod => prod.id == this.prodSelected);
+
+    if (!sup) {
+      let supplier = {
+        name: this.nameFormControl.value,
+        ruc: this.rucFormControl.value,
+        phone: this.phoneFormControl.value,
+        businessName: this.businessNameFormControl.value,
+        email: this.companyEmailFormControl.value,
+      }
+      console.log("supplier", supplier);
+      this.httpService.postRequest('api/v1/supplier/save', supplier).subscribe((response) => {
+        this.agreement = {
+          supplierId: response.data.supplier.id,
+          categoryId: cat?.id,
+          productId: pro?.id,
+          features: this.featureFormControl.value,
+          price: this.priceFormControl.value,
+          warranty: this.warrantyFormControl.value,
+          shippingTime: this.shippingFormControl.value,
+        };
+        this.httpService.postRequest('api/v1/agreement/save', this.agreement).subscribe((response) => { })
+      })
+
+    } else {
+      this.agreement = {
+        supplierId: sup?.id,
+        categoryId: cat?.id,
+        productId: pro?.id,
+        features: this.featureFormControl.value,
+        price: this.priceFormControl.value,
+        warranty: this.warrantyFormControl.value,
+        shippingTime: this.shippingFormControl.value,
+      }
+      this.httpService.postRequest('api/v1/agreement/save', this.agreement).subscribe((response) => { })
     }
-    this.httpService.postRequest('api/v1/agreement/save', this.agreement).subscribe((response) => {
-      this.products = response.data.products;
-    })
   }
 
+  clickCategory(categoryId: string): void {
+    let category = this.categories.find(c => c.id === categoryId);
+    this.productOptions = this.products.filter(product => product.categoryId == category?.id).map(p => { return { id: p.id, name: p.name } })
+  }
 }

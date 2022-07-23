@@ -19,7 +19,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HeroComponent } from './hero/hero.component';
 import { AgreementComponent } from './agreement/agreement.component';
-import { ManagementComponent } from './management/management.component';
 import { SendagreementComponent } from './sendagreement/sendagreement.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -31,6 +30,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogEditCategoryComponent } from './dialog-edit-category/dialog-edit-category.component';
 import { DialogEditProductComponent } from './dialog-edit-product/dialog-edit-product.component';
+import { SendedAgrementsComponent } from './sended-agrements/sended-agrements.component';
 
 @NgModule({
   declarations: [
@@ -38,12 +38,12 @@ import { DialogEditProductComponent } from './dialog-edit-product/dialog-edit-pr
     LoginComponent,
     HeroComponent,
     AgreementComponent,
-    ManagementComponent,
     SendagreementComponent,
     ProductComponent,
     CategoryComponent,
     DialogEditCategoryComponent,
-    DialogEditProductComponent
+    DialogEditProductComponent,
+    SendedAgrementsComponent
   ],
   imports: [
     BrowserModule,

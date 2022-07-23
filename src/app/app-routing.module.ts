@@ -3,10 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HeroComponent } from './hero/hero.component';
 import { AgreementComponent } from './agreement/agreement.component';
-import { ManagementComponent } from './management/management.component';
 import { SendagreementComponent } from './sendagreement/sendagreement.component';
 import { CategoryComponent } from './category/category.component';
 import { ProductComponent } from './product/product.component';
+import { SendedAgrementsComponent } from './sended-agrements/sended-agrements.component';
 
 const routes: Routes = [
   {
@@ -26,13 +26,14 @@ const routes: Routes = [
     path: 'agreement',
     component: AgreementComponent,
   },
-  {
-    path: 'management',
-    component: ManagementComponent,
-  },
+
   {
     path: 'sendAgreement',
     component: SendagreementComponent,
+  },
+  {
+    path: 'sendedAgreements',
+    component: SendedAgrementsComponent,
   },
   {
     path: 'mgmtCategories',

@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
   tabsWhenLogin: TabItem[] = [
     {
       label: 'Formularios enviados',
-      route: 'forms'
+      route: 'sendedAgreements'
     },
     {
       label: 'Mantenimiento Productos',
